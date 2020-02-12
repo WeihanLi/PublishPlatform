@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PublishPlatform.Api.Database;
 using PublishPlatform.Api.Models;
 using PublishPlatform.Api.Services;
 using PublishPlatform.Api.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using WeihanLi.EntityFramework;
 using WeihanLi.Extensions;
 using WeihanLi.Web.Extensions;
@@ -66,7 +66,18 @@ namespace PublishPlatform.Api.Controllers
                 return Ok(token);
             }
 
-            return BadRequest(new { Error = "待审核" });
+            var verificationRepo = RepositoryFactory.GetRepository<Verification>();
+            var verification = await verificationRepo.FetchAsync(v => v.UserId == user.Id, HttpContext.RequestAborted);
+            if (null == verification)
+            {
+                verification = new Verification()
+                {
+                    UserId = user.Id,
+                };
+                await verificationRepo.InsertAsync(verification, HttpContext.RequestAborted);
+            }
+
+            return BadRequest(new { Error = "用户未认证", Result = verification });
         }
 
         [HttpGet("profile")]
@@ -118,9 +129,22 @@ namespace PublishPlatform.Api.Controllers
         }
 
         [HttpPut("verification")]
+        [AllowAnonymous]
         public async Task<IActionResult> Verification([FromBody]Verification model)
         {
             var userId = User.GetUserId<Guid>();
+            if (userId == Guid.Empty)
+            {
+                if (model.UserId != Guid.Empty)
+                {
+                    userId = model.UserId;
+                }
+                else
+                {
+                    return BadRequest(new { Error = "用户信息异常" });
+                }
+            }
+
             var verificationsRepo = RepositoryFactory.GetRepository<Verification>();
             var verification = await verificationsRepo.FetchAsync(x => x.UserId == userId, HttpContext.RequestAborted);
             if (verification != null)
