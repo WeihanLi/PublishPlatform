@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PublishPlatform.Api.Database;
 using PublishPlatform.Api.Models;
-using System;
-using System.Linq;
 
 namespace PublishPlatform.Api.Business
 {
@@ -22,7 +22,7 @@ namespace PublishPlatform.Api.Business
                         return serviceProvider;
                     }
 
-                    var uid = Guid.NewGuid();
+                    Guid uid = Guid.NewGuid(), uid2 = Guid.NewGuid();
                     var phoneNum = "15601252222";
                     dbContext.Users.Add(new User()
                     {
@@ -35,7 +35,7 @@ namespace PublishPlatform.Api.Business
                     });
                     dbContext.Users.Add(new User()
                     {
-                        Id = Guid.NewGuid(),
+                        Id = uid2,
                         CreatedAt = DateTimeOffset.UtcNow,
                         DisplayName = "Alice",
                         UserName = "Alice",
@@ -49,6 +49,11 @@ namespace PublishPlatform.Api.Business
                         CompanyName = "AmazingStudio",
                         PhoneNumber = phoneNum,
                         Status = ReviewStatus.Reviewed,
+                        UserId = uid,
+                    });
+                    dbContext.Verifications.Add(new Verification()
+                    {
+                        Status = ReviewStatus.UnReviewed,
                         UserId = uid,
                     });
 

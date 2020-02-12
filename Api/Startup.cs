@@ -1,3 +1,5 @@
+锘縰sing System;
+using System.IO;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,8 +14,6 @@ using Newtonsoft.Json;
 using PublishPlatform.Api.Business;
 using PublishPlatform.Api.Database;
 using PublishPlatform.Api.Services;
-using System;
-using System.IO;
 using WeihanLi.Common;
 using WeihanLi.Common.Helpers;
 using WeihanLi.EntityFramework;
@@ -84,7 +84,7 @@ namespace PublishPlatform.Api
                 option.SwaggerDoc(ApplicationHelper.ApplicationName, new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "XX项目发布平台 API",
+                    Title = "XXX Project Publish Platform API",
                     Description = "API for PublishPlatform",
                     Contact = new OpenApiContact() { Name = "WeihanLi", Email = "weihanli@outlook.com" }
                 });
@@ -134,7 +134,7 @@ namespace PublishPlatform.Api
                 {
                     options.SwaggerEndpoint($"/swagger/{ApplicationHelper.ApplicationName}/swagger.json", ApplicationHelper.ApplicationName);
                     options.RoutePrefix = string.Empty;
-                    options.DocumentTitle = "发布平台 API";
+                    options.DocumentTitle = "Project Publish Platform API";
                 });
 
             app.UseRouting();
