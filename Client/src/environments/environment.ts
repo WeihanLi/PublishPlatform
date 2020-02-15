@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: "/data/"
+  apiBaseUrl: "https://pub-app-api.weihanli.xyz/api"
 };
 
 /*

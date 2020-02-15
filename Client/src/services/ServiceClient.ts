@@ -26,7 +26,7 @@ export class ServiceClient<TModel>{
   }
 
   public GetDetails(id: number|string, params?: object): Observable<TModel> {
-    let url = `${this.apiBaseUrl}/api/${this.apiPath}/${id}`;
+    let url = `${this.apiBaseUrl}/${this.apiPath}/${id}`;
     if(params && Object.keys(params).length > 0){
       url += "?";
       for(let name of Object.keys(params)){

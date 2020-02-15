@@ -10,7 +10,7 @@ import { ConfigService } from './ConfigService';
 export class NoticeService extends ServiceClient<Notice>{
 
   constructor(http: HttpClient, config: ConfigService){
-    super(http, config, 'notices.json');
+    super(http, config, 'notices');
   }
 
 }

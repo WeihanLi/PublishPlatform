@@ -24,6 +24,16 @@ export class Notice{
         this._publishedAt = v;
     }
 
+    
+    private _createdAt : Date;
+    public get createdAt() : Date {
+        return this._createdAt;
+    }
+    public set createdAt(v : Date) {
+        this._createdAt = v;
+    }
+    
+
     private _viewCount : number;
     public get viewCount() : number {
         return this._viewCount;

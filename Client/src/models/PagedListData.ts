@@ -1,53 +1,53 @@
 export class PagedListModel{
 
-    private _PageSize : number = 10;
-    public get PageSize() : number {
-        return this._PageSize;
+    private _pageSize : number = 10;
+    public get pageSize() : number {
+        return this._pageSize;
     }
-    public set PageSize(v : number) {
-        this._PageSize = v;
-    }
-
-    private _PageNumber : number;
-    public get PageNumber() : number {
-        return this._PageNumber;
-    }
-    public set PageNumber(v : number) {
-        this._PageNumber = v;
+    public set pageSize(v : number) {
+        this._pageSize = v;
     }
 
-    private _Count : number;
-    public get Count() : number {
-        return this._Count;
+    private _pageNumber : number;
+    public get pageNumber() : number {
+        return this._pageNumber;
     }
-    public set Count(v : number) {
-        this._Count = v;
-    }
-
-    private _PageCount : number;
-    public get PageCount() : number {
-        return this._PageCount;
-    }
-    public set PageCount(v : number) {
-        this._PageCount = v;
+    public set pageNumber(v : number) {
+        this._pageNumber = v;
     }
 
-    private _TotalCount : number;
-    public get TotalCount() : number {
-        return this._TotalCount;
+    private _count : number;
+    public get count() : number {
+        return this._count;
     }
-    public set TotalCount(v : number) {
-        this._TotalCount = v;
+    public set count(v : number) {
+        this._count = v;
+    }
+
+    private _pageCount : number;
+    public get pageCount() : number {
+        return this._pageCount;
+    }
+    public set pageCount(v : number) {
+        this._pageCount = v;
+    }
+
+    private _totalCount : number;
+    public get totalCount() : number {
+        return this._totalCount;
+    }
+    public set totalCount(v : number) {
+        this._totalCount = v;
     }
 }
 
 export class PagedListData<T> extends PagedListModel{
 
-  private _Data : Array<T>;
-  public get Data() : Array<T> {
-      return this._Data;
+  private _data : Array<T>;
+  public get data() : Array<T> {
+      return this._data;
   }
-  public set Data(v : Array<T>) {
-      this._Data = v;
+  public set data(v : Array<T>) {
+      this._data = v;
   }
 }

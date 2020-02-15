@@ -19,8 +19,6 @@ export class Project{
         this._projectName = v;
     }
     
-
-    
     private _projectDescription : string;
     public get projectDescription() : string {
         return this._projectDescription;

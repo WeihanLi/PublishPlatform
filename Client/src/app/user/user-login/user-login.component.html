@@ -1,0 +1,10 @@
+<div>
+    <h2>选择要登录的用户</h2>
+    <div>
+        <mat-action-list>
+            <button mat-list-item style="text-decoration: underline;" *ngFor="let user of defaultUsers" type="button" (click)="login(user.userName)">
+              {{user.displayName}}
+            </button>
+        </mat-action-list>
+    </div>
+</div>

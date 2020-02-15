@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'src/models/menuItem';
+import { LoadingService } from 'src/services/LoadingService';
+import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel  } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,10 @@ import { MenuItem } from 'src/models/menuItem';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
+
+  constructor(public loadingSvc: LoadingService, private router:Router) {
+  }
+
   title = 'XX 项目发布平台';
   year = new Date().getFullYear();
 
