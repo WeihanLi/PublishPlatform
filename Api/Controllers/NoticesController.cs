@@ -48,6 +48,8 @@ namespace PublishPlatform.Api.Controllers
             {
                 return NotFound();
             }
+            result.ViewCount += 1;
+            await _repository.UpdateAsync(result, n=>n.ViewCount);
             return Ok(result);
         }
     }
