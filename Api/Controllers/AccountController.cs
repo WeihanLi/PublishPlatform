@@ -81,9 +81,14 @@ namespace PublishPlatform.Api.Controllers
         }
 
         [HttpGet("profile")]
-        public async Task<IActionResult> Profile()
+        [AllowAnonymous]
+        public async Task<IActionResult> Profile(Guid? userId)
         {
-            var userId = User.GetUserId<Guid>();
+            userId = userId.GetValueOrDefault(User.GetUserId<Guid>());
+            if(userId == Guid.Empty)
+            {
+                return BadRequest();
+            }
             var user = await _repository.FetchAsync(x => x.Id == userId, HttpContext.RequestAborted);
             if (user != null)
             {
