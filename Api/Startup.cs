@@ -34,7 +34,8 @@ namespace PublishPlatform.Api
         {
             services.AddDbContext<PubDbContext>(options =>
             {
-                options.UseInMemoryDatabase("Pubs");
+                // options.UseInMemoryDatabase("PubApp");
+                options.UseMySql(Configuration.GetConnectionString("PubApp"));
             });
             services.AddEFRepository();
 
