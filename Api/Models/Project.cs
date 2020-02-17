@@ -1,9 +1,12 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PublishPlatform.Api.Models
 {
     public class Project : EntityBase
     {
+        [StringLength(32)]
+        [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }

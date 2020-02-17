@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PublishPlatform.Api.Models;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using PublishPlatform.Api.Models;
 using WeihanLi.EntityFramework;
 
 namespace PublishPlatform.Api.Database
@@ -36,6 +36,8 @@ namespace PublishPlatform.Api.Database
         public DbSet<Verification> Verifications { get; set; }
 
         public DbSet<Project> Projects { get; set; }
+
+        public DbSet<ProjectApply> ProjectApplies { get; set; }
 
         public DbSet<Notice> Notices { get; set; }
 
