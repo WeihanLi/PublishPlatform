@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PublishPlatform.Api.Database;
 using PublishPlatform.Api.Models;
-using System;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using WeihanLi.EntityFramework;
 using WeihanLi.Extensions;
 
@@ -26,7 +26,9 @@ namespace PublishPlatform.Api.Controllers
             if (keyword.IsNotNullOrWhiteSpace())
             {
                 keyword = keyword.Trim();
-                predict = predict.And(n => n.Title.Contains(keyword));
+                predict = n => n.Status == ReviewStatus.Reviewed
+                               && n.Title.Contains(keyword);
+                // predict = predict.And(n => n.Title.Contains(keyword));
             }
 
             var result = await _repository.GetPagedListResultAsync(notice => new
@@ -49,7 +51,7 @@ namespace PublishPlatform.Api.Controllers
                 return NotFound();
             }
             result.ViewCount += 1;
-            await _repository.UpdateAsync(result, n=>n.ViewCount);
+            await _repository.UpdateAsync(result, n => n.ViewCount);
             return Ok(result);
         }
     }

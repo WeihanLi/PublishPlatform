@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PublishPlatform.Api.Database;
 using PublishPlatform.Api.Models;
-using System;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
 using WeihanLi.EntityFramework;
 using WeihanLi.Extensions;
 
@@ -26,7 +26,10 @@ namespace PublishPlatform.Api.Controllers
             if (keyword.IsNotNullOrWhiteSpace())
             {
                 keyword = keyword.Trim();
-                predict = predict.And(n => n.Name.Contains(keyword));
+                predict = n => n.Status != ProjectStatus.NotPublished
+                               && n.Name.Contains(keyword);
+                // bug with "And" extension
+                // predict = predict.And(n => n.Name.Contains(keyword));
             }
             var result = await _repository.GetPagedListResultAsync(project => new
             {
