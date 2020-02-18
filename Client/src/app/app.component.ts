@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { MenuItem } from 'src/models/menuItem';
+import { MenuItem } from 'src/models/MenuItem';
 import { LoadingService } from 'src/services/LoadingService';
-import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCancel  } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
