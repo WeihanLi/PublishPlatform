@@ -7,6 +7,9 @@
     </header>
     <section>
         <mat-nav-list style="width:120px;text-align: center;margin: 0 auto;">
+            <a mat-list-item [routerLink]="['/user', 'login']">
+                <h2>切换用户</h2>
+            </a>
             <a mat-list-item [routerLink]="['/user', 'profile']">
                 <h2>个人资料</h2>
             </a>

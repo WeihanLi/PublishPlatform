@@ -48,6 +48,7 @@ export class UserLoginComponent implements OnInit {
       console.groupEnd();
       if (err instanceof HttpErrorResponse) {
         if (err.status === 400) {
+          this.authService.ClearToken();
           console.log(`BadRequest， Error: ${JSON.stringify(err.error)}`);
           // redirect to verificationInfo
           this.router.navigateByUrl(`user/verification?userId=${err.error?.userId}`);

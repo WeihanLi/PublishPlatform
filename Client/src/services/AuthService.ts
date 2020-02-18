@@ -30,6 +30,11 @@ export class AuthService{
         }
     }
 
+    public ClearToken(){
+        localStorage.removeItem(TokenExpiresAtCacheName);
+        localStorage.removeItem(TokenCacheName);
+    }
+
     public IsAuthenticated():boolean {
         return this.GetToken() != '';
     }
