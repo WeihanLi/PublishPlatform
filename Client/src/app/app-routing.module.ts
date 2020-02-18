@@ -11,6 +11,7 @@ import { UserHomeComponent } from './user/user-home/user-home.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 
 import { AuthGuard } from 'src/interceptors/AuthGuard';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: '', component: ProjectListComponent, canActivate: [AuthGuard] },
@@ -23,8 +24,9 @@ const routes: Routes = [
 
   { path: 'user/home', component: UserHomeComponent },
   { path: 'user/projects', component: UserProjectsComponent, canActivate: [AuthGuard] },
-  { path: 'user/verification', component: UserVerificationComponent },
+  { path: 'user/profile', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'user/feedback', component: UserFeedbackComponent, canActivate: [AuthGuard] },
+  { path: 'user/verification', component: UserVerificationComponent },
   { path: 'user/login', component: UserLoginComponent },
   
   { path: '**', redirectTo: '/' }

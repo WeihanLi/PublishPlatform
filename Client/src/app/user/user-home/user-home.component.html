@@ -1,1 +1,24 @@
-<p>user-home works!</p>
+<div style="margin-top: 0.2rem;">
+    <header style="margin: 0 auto;text-align: center;">
+        <img [src]="user.profileImageUrl" style="width: 196px;border-radius: 50%;" alt="avator" mat-card-image />
+        <div style="margin: 0.2rem auto 0.1rem;">
+            <h1>{{user.displayName}}</h1>
+        </div>
+    </header>
+    <section>
+        <mat-nav-list style="width:120px;text-align: center;margin: 0 auto;">
+            <a mat-list-item [routerLink]="['/user', 'profile']">
+                <h2>个人资料</h2>
+            </a>
+            <a mat-list-item [routerLink]="['/user', 'verification']">
+                <h2>认证信息</h2>
+            </a>
+            <a mat-list-item [routerLink]="['/user', 'projects']">
+                <h2>我的申请</h2>
+            </a>
+            <a mat-list-item [routerLink]="['/user', 'feedback']">
+                <h2>用户反馈</h2>
+            </a>
+        </mat-nav-list>
+    </section>
+</div>

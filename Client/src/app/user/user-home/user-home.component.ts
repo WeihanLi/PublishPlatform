@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserProfileInfo } from 'src/models/UserProfileInfo';
+import { UserService } from 'src/services/UserService';
 
 @Component({
   selector: 'app-user-home',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserHomeComponent implements OnInit {
 
-  constructor() { }
+  user:UserProfileInfo;
+  constructor(private svc: UserService) { 
+    this.user = new UserProfileInfo();
+  }
 
   ngOnInit(): void {
+    this.svc.getProfileInfo()
+    .subscribe(data => {
+      this.user = data;
+    });
   }
 
 }

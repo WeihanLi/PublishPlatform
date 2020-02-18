@@ -16,16 +16,20 @@
     
   </div>
   <table mat-table #table [dataSource]="list" style="margin:0 auto;">
-    <ng-container matColumnDef="{{column.ColumnName}}" *ngFor="let column of columns">
-        <th mat-header-cell *matHeaderCellDef> {{column.DisplayName}} </th>
-        <td mat-cell *matCellDef="let element" style="padding: 0.2rem;">
-          <span *ngIf="column.ColumnName === 'name'">{{ element[column.ColumnName] }}</span>
-          <span *ngIf="column.ColumnName === 'status'">{{ element['status']===1? '招标中': (element['status']===2?'招标成功':'招标结束') }}</span>
-          <span *ngIf="column.ColumnName != 'name' && column.ColumnName != 'status'">{{ element[column.ColumnName] | date:'yyyy-MM-dd HH:mm:ss' }}</span>
-        </td>        
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row [routerLink]="['/projects', row.id]" *matRowDef="let row; columns: displayedColumns;" [ngStyle]="{'background-color': row['ReservationStatus'] == 1? '#dff0d8': row['ReservationStatus']==2?'#f2dede':''}"></tr>
+    <thead>
+      <ng-container matColumnDef="{{column.ColumnName}}" *ngFor="let column of columns">
+          <th mat-header-cell *matHeaderCellDef> {{column.DisplayName}} </th>
+          <td mat-cell *matCellDef="let element" style="padding: 0.2rem;">
+            <span *ngIf="column.ColumnName === 'name'">{{ element[column.ColumnName] }}</span>
+            <span *ngIf="column.ColumnName === 'status'">{{ element['status']===1? '招标中': (element['status']===2?'招标成功':'招标结束') }}</span>
+            <span *ngIf="column.ColumnName != 'name' && column.ColumnName != 'status'">{{ element[column.ColumnName] | date:'yyyy-MM-dd HH:mm:ss' }}</span>
+          </td>        
+      </ng-container>
+    </thead>
+    <tbody>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row [routerLink]="['/projects', row.id]" *matRowDef="let row; columns: displayedColumns;" [ngStyle]="{'background-color': row['ReservationStatus'] == 1? '#dff0d8': row['ReservationStatus']==2?'#f2dede':''}"></tr>  
+    </tbody>
   </table>
   <mat-paginator showFirstLastButtons (page)="onPageEvent($event)" [length]="total" [pageIndex]="pageNum-1" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]">
   </mat-paginator>

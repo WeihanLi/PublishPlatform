@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './ConfigService';
 import { Observable } from 'rxjs';
 import { TokenEntity } from 'src/models/TokenEntity';
+import { UserProfileInfo } from 'src/models/UserProfileInfo';
 
 
 @Injectable({
@@ -30,5 +31,15 @@ export class UserService extends ServiceClient<VerificationInfo>{
     public updateVerificationInfo(info: VerificationInfo): Observable<VerificationInfo>{
         let url = `${this.apiBaseUrl}/${this.apiPath}/verification`;
         return this.http.put<VerificationInfo>(url, info);
+    }
+
+    public getProfileInfo(): Observable<UserProfileInfo>{
+        let url = `${this.apiBaseUrl}/${this.apiPath}/profile`;
+        return this.http.get<UserProfileInfo>(url);
+    }
+    
+    public updateProfileInfo(profileInfo: UserProfileInfo): Observable<UserProfileInfo>{
+        let url = `${this.apiBaseUrl}/${this.apiPath}/profile`;
+        return this.http.put<UserProfileInfo>(url, profileInfo);
     }
 }

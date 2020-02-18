@@ -23,6 +23,7 @@ import { TokenInterceptor } from 'src/interceptors/TokenInterceptor';
 import { LoadingInteceptor } from 'src/interceptors/LoadingInteceptor';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { SanitizeHtmlPipe } from './shared/pipes/SanitizeHtmlPipe';
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { SanitizeHtmlPipe } from './shared/pipes/SanitizeHtmlPipe';
     UserHomeComponent,
     UserLoginComponent,
     LoadingComponent,
-    SanitizeHtmlPipe
+    SanitizeHtmlPipe,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

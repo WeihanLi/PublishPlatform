@@ -28,7 +28,7 @@ export class UserVerificationComponent implements OnInit {
       this.isAuthenticated = authSvc.IsAuthenticated();
 
       this.verificationForm = new FormGroup({
-        realName: new FormControl(this.verificationInfo.realName, [Validators.required, Validators.maxLength(4)]),
+        realName: new FormControl(this.verificationInfo.realName, [Validators.required, Validators.maxLength(16)]),
         phoneNumber: new FormControl(this.verificationInfo.phoneNumber, [Validators.required, Validators.pattern('^1[3-9]\\d{9}$')]),
         companyName: new FormControl(this.verificationInfo.companyName, [Validators.required, Validators.maxLength(64)]),
         companyDesc: new FormControl(this.verificationInfo.extra, [Validators.required, Validators.maxLength(2000)]),
