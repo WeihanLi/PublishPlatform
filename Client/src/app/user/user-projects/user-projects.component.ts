@@ -10,7 +10,6 @@ import { Project } from 'src/models/Project';
 })
 export class UserProjectsComponent implements OnInit {
 
-  c
   pageNum:number = 1;
   pageSize:number = 10;
   total: number = 0;

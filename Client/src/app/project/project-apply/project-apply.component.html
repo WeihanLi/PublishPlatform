@@ -1,0 +1,18 @@
+<div>
+    <h1 mat-dialog-title>项目申请</h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>项目优势</mat-label>
+            <input matInput placeholder="优势" required="required" [(ngModel)]="data.advantages" />
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+            <mat-label>项目预算</mat-label>
+            <input matInput type="number" min="0" step="1000" placeholder="预算" [(ngModel)]="data.price" required="required" />
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button [mat-dialog-close]="data" (click)="submitApply()" cdkFocusInitial>提交</button>
+        <button mat-button (click)="onNoClick()">取消</button>
+    </div>
+</div>

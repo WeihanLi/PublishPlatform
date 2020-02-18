@@ -24,6 +24,7 @@ import { LoadingInteceptor } from 'src/interceptors/LoadingInteceptor';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { SanitizeHtmlPipe } from './shared/pipes/SanitizeHtmlPipe';
 import { UserProfileComponent } from './user/user-profile/user-profile.component';
+import { ProjectApplyComponent } from './project/project-apply/project-apply.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UserProfileComponent } from './user/user-profile/user-profile.component
     UserLoginComponent,
     LoadingComponent,
     SanitizeHtmlPipe,
-    UserProfileComponent
+    UserProfileComponent,
+    ProjectApplyComponent
   ],
   imports: [
     BrowserModule,
