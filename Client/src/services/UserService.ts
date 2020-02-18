@@ -16,7 +16,19 @@ export class UserService extends ServiceClient<VerificationInfo>{
     }
 
     public login(userName:string):Observable<TokenEntity>{
-        // error handle
         return this.http.post<TokenEntity>(`${this.apiBaseUrl}/${this.apiPath}/login`, { userName: userName });
+    }
+
+    public getVerificationInfo(userId?: string): Observable<VerificationInfo>{
+        let url = `${this.apiBaseUrl}/${this.apiPath}/verification`;
+        if(userId){
+            url = `${url}?userId=${userId}`;
+        }
+        return this.http.get<VerificationInfo>(url);
+    }
+
+    public updateVerificationInfo(info: VerificationInfo): Observable<VerificationInfo>{
+        let url = `${this.apiBaseUrl}/${this.apiPath}/verification`;
+        return this.http.put<VerificationInfo>(url, info);
     }
 }

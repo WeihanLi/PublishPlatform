@@ -16,14 +16,14 @@ const routes: Routes = [
   { path: '', component: ProjectListComponent, canActivate: [AuthGuard] },
   
   { path: 'projects', component: ProjectListComponent, canActivate: [AuthGuard] },
-  { path: 'projects/:projectName', component: ProjectDetailComponent, canActivate: [AuthGuard] },
-  
+  { path: 'projects/:projectId', component: ProjectDetailComponent, canActivate: [AuthGuard] },
+ 
   { path: 'notices', component: NoticeListComponent, canActivate: [AuthGuard] },
   { path: 'notices/:noticePath', component: NoticeDetailComponent, canActivate: [AuthGuard] },
 
   { path: 'user/home', component: UserHomeComponent },
   { path: 'user/projects', component: UserProjectsComponent, canActivate: [AuthGuard] },
-  { path: 'user/verification', component: UserVerificationComponent, canActivate: [AuthGuard] },
+  { path: 'user/verification', component: UserVerificationComponent },
   { path: 'user/feedback', component: UserFeedbackComponent, canActivate: [AuthGuard] },
   { path: 'user/login', component: UserLoginComponent },
   

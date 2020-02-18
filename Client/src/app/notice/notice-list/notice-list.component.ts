@@ -42,5 +42,6 @@ export class NoticeListComponent implements OnInit {
   onPageEvent(pageParams){
     this.pageNum = pageParams.pageIndex+1;
     this.pageSize = pageParams.pageSize;
+    this.loadData();
   }
 }

@@ -7,12 +7,12 @@ export class VerificationInfo{
         this._realName = v;
     }
     
-    private _phone : string;
-    public get phone() : string {
-        return this._phone;
+    private _phoneNumber : string;
+    public get phoneNumber() : string {
+        return this._phoneNumber;
     }
-    public set phone(v : string) {
-        this._phone = v;
+    public set phoneNumber(v : string) {
+        this._phoneNumber = v;
     }
     
     
@@ -39,4 +39,23 @@ export class VerificationInfo{
     public set extra(v : string) {
         this._extra = v;
     }
+
+    
+    private _status : number;
+    public get status() : number {
+        return this._status;
+    }
+    public set status(v : number) {
+        this._status = v;
+    }
+
+    
+    private _remark : string;
+    public get remark() : string {
+        return this._remark;
+    }
+    public set remark(v : string) {
+        this._remark = v;
+    }
+    
 }

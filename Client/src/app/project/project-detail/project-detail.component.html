@@ -1,1 +1,42 @@
-<p>project-detail works!</p>
+<div>
+    <mat-card class="project-card">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title>{{project?.name}}</mat-card-title>
+        <mat-card-subtitle>{{project?.publishedAt|date:'yyyy-MM-dd HH:mm:ss'}}</mat-card-subtitle>
+      </mat-card-header>
+      <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+      <mat-card-content>
+          <div>
+              <h4>招标时间：</h4>
+              <p>
+                  {{project?.begin|date:'yyyy-MM-dd HH:mm:ss'}} -- {{project?.end|date:'yyyy-MM-dd HH:mm:ss'}}
+              </p>
+          </div>
+          <div>
+            <h4>详细介绍：</h4>
+            <div [innerHTML]="project?.description | sanitizeHtml">
+            </div>
+          </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary" *ngIf="project?.status===1">我要申请</button>
+        <button mat-flat-button disabled="disabled" *ngIf="project?.status===2">项目已招标成功</button>
+        <button mat-flat-button disabled="disabled" *ngIf="project?.status===3">项目已结束</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card *ngIf="projectApplied === true">
+      <mat-card-header>
+        <mat-card-title>项目申请信息</mat-card-title>
+      </mat-card-header>      
+      <mat-card-content>
+        <div>这里是申请信息...</div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary" *ngIf="project.status===1 && apply?.status === 0">修改申请信息</button>
+        <button mat-flat-button disabled="disabled" *ngIf="apply?.status===1">申请已审核通过，不能再修改</button>        
+        <button mat-flat-button disabled="disabled" *ngIf="project.status===2">项目已招标成功，不能修改</button>
+        <button mat-flat-button disabled="disabled" *ngIf="project.status===3">项目已结束，不能修改</button>
+      </mat-card-actions>
+    </mat-card>
+</div>

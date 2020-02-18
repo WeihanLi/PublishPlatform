@@ -7,10 +7,10 @@ import { ConfigService } from './ConfigService';
 @Injectable({
   providedIn: 'root'
 })
-export class NoticeService extends ServiceClient<Project>{
+export class ProjectService extends ServiceClient<Project>{
 
   constructor(http: HttpClient, config: ConfigService){
-    super(http, config, 'projects.json');
+    super(http, config, 'projects');
   }
 
 }

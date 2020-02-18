@@ -2,37 +2,36 @@ import { ProjectStatus } from './ProjectStatus';
 
 export class Project{
     
-    private _projectId : string;
-    public get projectId() : string {
-        return this._projectId;
+    private _id : string;
+    public get id() : string {
+        return this._id;
     }
-    public set projectId(v : string) {
-        this._projectId = v;
-    }
-    
-    
-    private _projectName : string;
-    public get projectName() : string {
-        return this._projectName;
-    }
-    public set projectName(v : string) {
-        this._projectName = v;
+    public set id(v : string) {
+        this._id = v;
     }
     
-    private _projectDescription : string;
-    public get projectDescription() : string {
-        return this._projectDescription;
+    private _name : string;
+    public get name() : string {
+        return this._name;
     }
-    public set projectDescription(v : string) {
-        this._projectDescription = v;
+    public set name(v : string) {
+        this._name = v;
     }
     
-    private _projectStatus : ProjectStatus;
-    public get projectStatus() : ProjectStatus {
-        return this._projectStatus;
+    private _description : string;
+    public get description() : string {
+        return this._description;
     }
-    public set projectStatus(v : ProjectStatus) {
-        this._projectStatus = v;
+    public set description(v : string) {
+        this._description = v;
+    }
+    
+    private _status : ProjectStatus;
+    public get status() : ProjectStatus {
+        return this._status;
+    }
+    public set status(v : ProjectStatus) {
+        this._status = v;
     }
     
     

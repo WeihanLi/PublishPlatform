@@ -15,7 +15,6 @@ export class NoticeDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private svc: NoticeService,
-    public loadingSvc: LoadingService,
     private router: Router
   ) { }
 

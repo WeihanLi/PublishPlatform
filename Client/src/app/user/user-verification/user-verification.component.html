@@ -1,1 +1,45 @@
-<p>user-verification works!</p>
+<div style="padding: 0.1rem 2rem;">
+    <form [formGroup]="verificationForm" (ngSubmit)="submit()">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>
+                    {{ verificationInfo.status === 0?'待审核':(verificationInfo.status==1?'审核通过':'审核未通过')  }}
+                </mat-card-title>
+                <mat-card-subtitle>{{ verificationInfo.remark }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <div>
+                    <mat-form-field>
+                        <mat-label>姓名</mat-label>
+                        <input matInput form-control formControlName="realName" placeholder="真实姓名"
+                            [(ngModel)]="verificationInfo.realName" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>手机号</mat-label>
+                        <input matInput placeholder="手机号码" formControlName="phoneNumber"
+                            [(ngModel)]="verificationInfo.phoneNumber" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>公司</mat-label>
+                        <input matInput placeholder="公司名称" formControlName="companyName"
+                            [(ngModel)]="verificationInfo.companyName" required>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <mat-label>公司介绍</mat-label>
+                        <textarea matInput placeholder="公司介绍" formControlName="companyDesc"
+                            [(ngModel)]="verificationInfo.extra" required></textarea>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button type="submit" [disabled]="!verificationForm.valid" color="primary" mat-flat-button>提交</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

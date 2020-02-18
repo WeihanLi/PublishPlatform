@@ -13,7 +13,6 @@ import { ProjectListComponent } from './project/project-list/project-list.compon
 import { ProjectDetailComponent } from './project/project-detail/project-detail.component';
 import { UserVerificationComponent } from './user/user-verification/user-verification.component';
 import { UserProjectsComponent } from './user/user-projects/user-projects.component';
-import { ProjectApplyComponent } from './project/project-apply/project-apply.component';
 import { UserFeedbackComponent } from './user/user-feedback/user-feedback.component';
 import { UserHomeComponent } from './user/user-home/user-home.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
@@ -34,7 +33,6 @@ import { SanitizeHtmlPipe } from './shared/pipes/SanitizeHtmlPipe';
     ProjectDetailComponent,
     UserVerificationComponent,
     UserProjectsComponent,
-    ProjectApplyComponent,
     UserFeedbackComponent,
     UserHomeComponent,
     UserLoginComponent,
