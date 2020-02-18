@@ -66,18 +66,7 @@ namespace PublishPlatform.Api.Controllers
                 return Ok(token);
             }
 
-            var verificationRepo = RepositoryFactory.GetRepository<Verification>();
-            var verification = await verificationRepo.FetchAsync(v => v.UserId == user.Id, HttpContext.RequestAborted);
-            if (null == verification)
-            {
-                verification = new Verification()
-                {
-                    UserId = user.Id,
-                };
-                await verificationRepo.InsertAsync(verification, HttpContext.RequestAborted);
-            }
-
-            return BadRequest(new { Error = "用户未认证", Result = verification });
+            return BadRequest(new { Error = "用户未认证", UserId = user.Id });
         }
 
         [HttpGet("profile")]
@@ -85,7 +74,7 @@ namespace PublishPlatform.Api.Controllers
         public async Task<IActionResult> Profile(Guid? userId)
         {
             userId = userId.GetValueOrDefault(User.GetUserId<Guid>());
-            if(userId == Guid.Empty)
+            if (userId == Guid.Empty)
             {
                 return BadRequest();
             }
@@ -121,11 +110,20 @@ namespace PublishPlatform.Api.Controllers
         }
 
         [HttpGet("verification")]
-        public async Task<IActionResult> GetVerificationInfo()
+        [AllowAnonymous]
+        public async Task<IActionResult> GetVerificationInfo(Guid userId)
         {
-            var userId = User.GetUserId<Guid>();
+            var uid = User.GetUserId<Guid>();
+            if (uid == Guid.Empty)
+            {
+                if (userId == Guid.Empty)
+                {
+                    return BadRequest(new { Error = "用户信息异常" });
+                }
+                uid = userId;
+            }
             var verificationsRepo = RepositoryFactory.GetRepository<Verification>();
-            var verification = await verificationsRepo.FetchAsync(x => x.UserId == userId, HttpContext.RequestAborted);
+            var verification = await verificationsRepo.FetchAsync(x => x.UserId == uid, HttpContext.RequestAborted);
             if (verification != null)
             {
                 return Ok(verification);
