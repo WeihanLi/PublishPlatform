@@ -1,1 +1,17 @@
-<p>user-profile works!</p>
+<div style="padding: 0.2rem 2rem;">
+    <div>
+        <input type="file" id="avatorInput" style="display: none;" />
+        <img [src]="profileInfo.profileImageUrl" style="width: 128px;border-radius: 50%;" alt="avator" mat-card-image />
+        <button mat-flat-button color="accent" (click)="changeAvator()">修改头像</button> <br/>
+
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>昵称</mat-label>
+            <input matInput type="text" name="nickName" [(ngModel)]="profileInfo.displayName" />
+        </mat-form-field>
+    </div>
+    <div>
+        <button mat-flat-button color="primary">保存</button>
+    </div>
+</div>

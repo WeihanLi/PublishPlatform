@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/services/UserService';
+import { UserProfileInfo } from 'src/models/UserProfileInfo';
 
 @Component({
   selector: 'app-user-profile',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  profileInfo: UserProfileInfo;
+  constructor(private svc:UserService) {
+    this.profileInfo = new UserProfileInfo();
+   }
 
   ngOnInit(): void {
+    this.svc.getProfileInfo()
+    .subscribe(data=>{
+      this.profileInfo = data;
+    })
   }
 
+  changeAvator(){
+    document.getElementById("avatorInput").click();
+  }
 }
