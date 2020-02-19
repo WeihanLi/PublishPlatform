@@ -9,6 +9,8 @@
         <mat-form-field>
             <mat-label>项目预算</mat-label>
             <input matInput type="number" min="0" step="1000" placeholder="预算" [(ngModel)]="data.price" required="required" />
+            <span matPrefix>￥&nbsp;</span>
+            <span matSuffix>.00</span>
         </mat-form-field>
     </div>
     <div mat-dialog-actions>

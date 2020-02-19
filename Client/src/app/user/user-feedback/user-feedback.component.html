@@ -1,1 +1,19 @@
-<p>user-feedback works!</p>
+<div style="padding: 0.4rem 3rem;">
+    <form [formGroup]="feebackForm" (ngSubmit)="submit()">
+        <mat-form-field>
+            <mat-label>反馈类型</mat-label>
+            <mat-select [(ngModel)]="feedback.type" formControlName="type">
+              <mat-option value="advice">建议</mat-option>
+              <mat-option value="bug">错误</mat-option>
+              <mat-option value="other">其他</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br/>
+          <mat-form-field>
+            <mat-label>反馈内容</mat-label>
+            <textarea [(ngModel)]="feedback.content" matInput formControlName="content"></textarea>
+          </mat-form-field>   
+          <br/>
+          <button type="submit" [disabled]="!feebackForm.valid" mat-flat-button color="primary">提交</button>
+    </form>
+</div>
